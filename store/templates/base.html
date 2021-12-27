@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -7,21 +9,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>E-store</title>
-  <link rel="icon" href="static/img/small-logo.png" type="image/icon type">
+  <link rel="icon" href="{%static 'img/small-logo.png' %}" type="image/icon type">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- bootstrap icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <!-- css -->
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="{%static 'css/style.css' %}">
   <!-- owl Carousel -->
-  <link rel="stylesheet" href="static/css/owl.carousel.css">
-  <link rel="stylesheet" href="static/css/owl.theme.default.css">
+  <link rel="stylesheet" href="{%static 'css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.theme.default.css' %}">
   <!-- js slider -->
-  <link rel="stylesheet" href="static/css/splide.min.css">
+  <link rel="stylesheet" href="{%static 'css/splide.min.css' %}">
   <!-- <link rel="stylesheet" href="css/splide.min.css"> -->
-  <link rel="stylesheet" href="static/css/splide-default.min.css">
+  <link rel="stylesheet" href="{%static 'css/splide-default.min.css' %}">
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -33,8 +35,8 @@
   <div class="container-fluid main-section-nav">
     <nav class="navbar navbar-expand-lg navbar-light middle-nav">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="/static/img/logo.png" alt="" class="img-fluid logo"></a>
-        <a href=""><img src="/static/img/small-logo.png" class="img-fluid small-logo" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="{%static 'img/logo.png' %}" alt="" class="img-fluid logo"></a>
+        <a href="/"><img src="{%static 'img/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
         <div class="d-flex person-info">
           <!-- wish list  section -->
           <div class="wish-list">
@@ -43,10 +45,29 @@
           <!-- wish list section end -->
 
           <!-- user section -->
-          <div class="user-model-box" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-person user-icons"></i> <span class="singin-text">Hello, Sing In</span> <span
-              class="account-name">My Account</span>
+          {% if request.user.is_authenticated %}
+          <div class="user-model-box dropdown" data-bs-toggle="" data-bs-target="">
+            <a class="dropdown-toggle text-decoration-none" href="#" role="button" id="dropdownMenuLink"
+              data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="bi bi-person user-icons"></i>
+              <span class="singin-text text-decoration-none">Hello, {{request.user.first_name|slice:':8'}} </span>
+              <span class="account-name dropdown">
+              <p class="pt-1" href=""> My Account</p>  
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">History</a></li>
+              <li><a class="dropdown-item" href="/accounts/logout">Logout</a></li>
+            </ul>
+            </span>
           </div>
+          {% else %}
+          <div class="user-model-box" data-bs-toggle="" data-bs-target="">
+            <a class="text-decoration-none" href="/accounts/signup"><i class="bi bi-person user-icons"></i>
+              <span class="singin-text ">Hello, Sing In</span>
+              <span class="account-name">My Account
+              </span>
+            </a>
+          </div>
+          {% endif %}
           <!-- </button> -->
           <!-- Modal -->
 
@@ -87,7 +108,6 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header" style="background: #f6f9fc;">
-
           <ul class="list-group list-group-horizontal">
             <li class="list-group-item item-first fw-bold" id="signin"><i class="bi bi-lock"></i> Sign in</li>
             <li class="list-group-item item-second fw-bold signUp"><i class="bi bi-person"></i>
@@ -162,7 +182,7 @@
         </div>
         <div class="modal-body">
           <ul class="list-group cart-item-list list-group-horizontal  cart-product-list">
-            <li class="list-group-item  "><img src="/static/img/shoose01.jpg" class="img-fluid " alt="">
+            <li class="list-group-item  "><img src="{%static 'img/shoose01.jpg' %}" class="img-fluid " alt="">
             </li>
             <li class="list-group-item fw-bold"> <span class="product-name fw-bold">Sneakers</span>
               <p class="fw-bold">$150
@@ -172,7 +192,7 @@
             <li class="list-group-item mx-5 fw-bold cart-item-remove-button">X</li>
           </ul>
           <ul class="list-group cart-item-list list-group-horizontal">
-            <li class="list-group-item"><img src="/static/img/bag02.jpg" class="img-fluid" alt="">
+            <li class="list-group-item"><img src="{%static 'img/bag02.jpg' %}" class="img-fluid" alt="">
             </li>
             <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Backpack</span>
               <p class="fw-bold">$150
@@ -182,7 +202,7 @@
             <li class="list-group-item mx-5 fw-bold">X</li>
           </ul>
           <ul class="list-group cart-item-list list-group-horizontal">
-            <li class="list-group-item"><img src="/static/img/cap03.jpg" class="img-fluid" alt="">
+            <li class="list-group-item"><img src="{%static 'img/cap03.jpg' %}" class="img-fluid" alt="">
             </li>
             <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Stash
                 Hat</span>
@@ -233,9 +253,9 @@
   </div> -->
   <!-- sub nav End -->
 
-{% block content %}
+  {% block content %}
 
-{% endblock %}
+  {% endblock %}
 
   <!-- footer section start here  -->
   <div class="footer mx-3 pt-5">
@@ -307,7 +327,7 @@
             </div>
             <!-- <div class="footer-name">
               <h3>Download our app</h3>
-              <img src="/static/img/logo/footerapplogo.png" class="img-fluid footer-img" alt="">
+              <img src="/{%static 'img/logo/footerapplogo.png" class="img-fluid footer-img" alt="">
             </div> -->
           </div>
         </div>
@@ -325,18 +345,18 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <!-- js slider -->
   <!-- owl Carousel js -->
-  <script src="static/js/owl.carousel.js"></script>
+  <script src="{%static 'js/owl.carousel.js' %}"></script>
   <!-- js -->
-  <script src="static/js/main.js"></script>
-  <script src="static/js/form.js"></script>
-  <script src="static/js/cart.js"></script>
-  <script src="static/js/splide.min.js"></script>
+  <script src="{%static 'js/main.js' %}"></script>
+  <script src="{%static 'js/form.js' %}"></script>
+  <script src="{%static 'js/cart.js' %}"></script>
+  <script src="{%static 'js/splide.min.js' %}"></script>
 
   <script>
     AOS.init();
   </script>
 
-  
+
 </body>
 
 </html>
