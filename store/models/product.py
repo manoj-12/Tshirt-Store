@@ -13,12 +13,16 @@ class TshirtProperty(models.Model):
 
 
 class Occasion(TshirtProperty):
-    pass
+    class Meta:
+        verbose_name = 'occasions'
+        verbose_name_plural = 'Occasion'
 
 
 
 class Idealfor(TshirtProperty):
-    pass
+    class Meta:
+        verbose_name = "Idealfor"
+        verbose_name_plural = "Idea For"
 
 
 class NeckType(TshirtProperty):
@@ -38,6 +42,7 @@ class Color(TshirtProperty):
 
 class Tshirt(models.Model):
     tshirt_name = models.CharField(max_length=50 , null=False)
+    slug = models.CharField(max_length=50)
     discription = models.CharField(max_length=100 , blank=True)
     discount = models.IntegerField()
     image = models.ImageField(upload_to = 'upload/image' ,blank=False )
@@ -64,8 +69,11 @@ class Sizevariant(models.Model):
         ('XXL','EXTRA EXTRA LARGE'),
     )
     price = models.IntegerField()
-    tshirt = models.ForeignKey(Tshirt , on_delete=models.CASCADE)
+    tshirt = models.ForeignKey(Tshirt ,on_delete=models.CASCADE)
     size = models.CharField(choices=SIZES , max_length=5)
+
+    def __str__(self):
+        return self.size
 
 
 

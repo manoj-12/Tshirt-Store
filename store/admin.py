@@ -4,11 +4,17 @@ from store .models .product import Tshirt , NeckType , Occasion , Color ,Idealfo
 
 class Sizevariantconfig(admin.StackedInline):
     model = Sizevariant
+   
 
-class  Tshirtconfig(admin.ModelAdmin):
+class Tshirtconfig(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('tshirt_name',)}
     inlines = [Sizevariantconfig]
+    
 
-admin.site.register(Tshirt , Tshirtconfig)
+
+
+
+admin.site.register(Tshirt , Tshirtconfig )
 admin.site.register(NeckType)
 admin.site.register(Occasion)
 admin.site.register(Color)

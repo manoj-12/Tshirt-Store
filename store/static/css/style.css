@@ -217,6 +217,7 @@ ul li i {
 
 .signin-button:hover {
   background-color: #fe3638;
+ 
 }
 
 .person-info .cart-info {
@@ -576,6 +577,7 @@ ul li i {
 }
 
 .main-arrival-body {
+  position: relative;
   cursor: pointer;
   background-color: #f3f5f9;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -606,9 +608,9 @@ ul li i {
 .lable {
   -webkit-clip-path: polygon(12% 0, 63% 0, 100% 88%, 0 100%);
           clip-path: polygon(12% 0, 63% 0, 100% 88%, 0 100%);
-  position: relative;
+  position: absolute;
   z-index: 1;
-  top: 4px;
+  top: 5px;
   left: -13px;
   cursor: pointer;
   -webkit-transform: rotate(-29deg);
@@ -1112,5 +1114,96 @@ ul li i {
 }
 
 
+/* Detail Page desing with backend */
 
+
+.product-detail{
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sale-price{
+  color: rgb(51, 51, 51);
+  font-style:normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.actualprice{
+  color: rgb(153, 153, 153);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "Mier book";
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+.discount {
+  color: rgb(3, 141, 99);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Mier demi";
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.select-size{
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.AddToCart, .buyNow{
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #fe696ae6;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  width: 40%;
+}
+
+.AddToCart:hover{
+  background-color: #fe3638;
+}
+.buyNow:hover{
+  background-color: #fe3638;
+}
+
+
+.btn-dark{
+  color: #fff;
+  background-color: #fe696ae6;
+  border-color: #fe696ae6;
+}
+
+
+
+.btn-dark:hover{
+  color: #fff;
+  background-color: #fe3638;
+  border-color: #fe3638 ;
+ 
+}
+    /* border: 1px solid red; */
+    
+    
 /*# sourceMappingURL=style.css.map */
