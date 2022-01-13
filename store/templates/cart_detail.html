@@ -1,0 +1,128 @@
+{% extends 'base.html'%}
+{% load tshirt_tag %}
+{%block content%}
+<!-- 
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5">
+            <div class="main-section d-flex justify-content-around">
+                <div class="image-section">
+                    <img src="" alt="image">
+                </div>
+                <div class="product-rel-sec">
+                    <div class="name">
+                        <p>name</p>
+                    </div>
+                    <div class="name">
+                        <span>size</span>
+                        <span>quantity</span>
+                    </div>
+                    <div class="name">
+                        <p>price</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            
+            <h3>Price detail</h3>
+            <div class="d-flex justify-content-between">
+                <span>Product Charge</span>
+                <span>300</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span>Delivery Charge</span>
+                <span>300</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span>COD Charge</span>
+                <span>300</span>
+            </div>
+            <br>
+            <h3>Order Total</h3>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Tshirt Image</th>
+                <th scope="col">Tshirt Name</th>
+                <th scope="col">Size</th>
+                <th scope="col">Price</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">After Discount Price</td>
+                <th scope="col">Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart in carts %}
+            <tr>
+                <th scope="row">{{forloop.counter}} .</th>
+
+                <td><img src="" alt="" class="rounded-circle img-fluid"
+                        style="height: 70px;"></td>
+                <td>{{cart.tshirt.tshirt_name}}</td>
+                <td>{{cart.size}}</td>
+                <td>{{cart.size.price}}</td>
+                <td>{{cart.tshirt.discount}}</td>
+                <td>{{cart.quantity}}</td>
+                <td>{%clc_sale_price cart.size.price cart.tshirt.discount as afterdiscountprice %}{{afterdiscountprice}}</td>
+                <td>{% quantity afterdiscountprice cart.quantity as total%}{{total}}</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+        <tfoot>
+            <th colspan="7"></th>
+            <th colspan="">TOTAL :</th>
+            <th colspan="">{{total}}</th>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row d-flex justify-content-end">
+        <div class="col-md-2">
+            <a href="/checkout" style="text-decoration-line: none;"><p class="fw-bold btn btn-light">Continue To Check Out</p></a>
+        </div>
+       
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock%}

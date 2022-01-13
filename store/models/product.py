@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.fields import CharField
+from django.utils.tree import Node
+
 
 class TshirtProperty(models.Model):
     title = models.CharField(max_length=30, null=False)
@@ -15,28 +19,37 @@ class TshirtProperty(models.Model):
 class Occasion(TshirtProperty):
     class Meta:
         verbose_name = 'occasions'
-        verbose_name_plural = 'Occasion'
+        verbose_name_plural = 'OCCASION'
 
 
 
 class Idealfor(TshirtProperty):
     class Meta:
         verbose_name = "Idealfor"
-        verbose_name_plural = "Idea For"
+        verbose_name_plural = "IDEAL FOR"
 
 
 class NeckType(TshirtProperty):
-    pass
+    class Meta:
+        verbose_name_plural = 'NECK TYPE'
+  
 
 class Sleeve(TshirtProperty):
-    pass
+    class Meta:
+        verbose_name_plural = 'SLEEVE'
+   
 
 class Brand(TshirtProperty):
-    pass
+    class Meta:
+        verbose_name_plural = 'BRAND'
+ 
 
 
 class Color(TshirtProperty):
-    pass
+
+    class Meta:
+        verbose_name_plural = 'COLOR'
+  
 
 
 
@@ -55,6 +68,9 @@ class Tshirt(models.Model):
     sleeve = models.ForeignKey(Sleeve, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     color = models.ForeignKey(Color, on_delete=models.CASCADE)
+    class Meta:
+        # verbose_name = 'Child'
+        verbose_name_plural = 'TSHIRT'
 
     def __str__(self):
         return f'{self.tshirt_name}'
@@ -71,15 +87,67 @@ class Sizevariant(models.Model):
     price = models.IntegerField()
     tshirt = models.ForeignKey(Tshirt ,on_delete=models.CASCADE)
     size = models.CharField(choices=SIZES , max_length=5)
-
     def __str__(self):
         return self.size
 
 
+class Cart(models.Model):
+    sizeVariant = models.ForeignKey(Sizevariant , on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
+    class Meta:
+        # verbose_name = 'Child'
+        verbose_name_plural = 'CART'
+
+    def __str__(self):
+        return f'{self.sizeVariant} {self.quantity} {self.user}'
 
 
 
+class Order(models.Model):
+    orderStatus = (
+        ('PANDING','pending'),
+        ('PLACED','placed'),
+        ('CANCELED','canceled'),
+        ('COMPLETE','complet'),
+    )
+
+    paymentMethod = (
+        ('COD','cod'),
+        ('ONLINE','online'),
+    )
+
+    order_statu = models.CharField(choices=orderStatus , max_length=15)
+    payment_method  = models.CharField(choices=paymentMethod , max_length=15)
+    shiping_address  = models.CharField(max_length=100 , null=False)
+    phone  = models.CharField(max_length=10, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total = models.IntegerField(null=False)
+    date = models.DateTimeField(null=False , auto_now_add=True)
 
 
+    class Meta:
+        verbose_name_plural = 'ORDER'
+    
 
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)  
+    tshirt = models.ForeignKey(Tshirt, on_delete=models.CASCADE)  
+    size = models.ForeignKey(Sizevariant, on_delete=models.CASCADE)  
+    quantity = models.IntegerField(null=False)
+    price = models.IntegerField(null=False)
+    date = models.DateTimeField(null=False , auto_now_add=True)
 
+    class Meta:
+        verbose_name_plural = 'ORDER ITEMS'
+
+    
+class Payment(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)  
+    date = models.DateTimeField(null=False , auto_now_add=True)
+    payment_status = CharField(max_length=15 , default='FAILED')
+    payment_id = models.CharField(max_length=60)
+    payment_request_id = models.CharField(max_length=60 , unique=True, null=False )
+
+    class Meta:
+        verbose_name_plural = 'PAYMENT'

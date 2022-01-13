@@ -1003,7 +1003,7 @@ ul li i {
   text-decoration: none;
   font-weight: bold;
   color: #373f50;
-  color: #fe696a;
+  /* color: #fe696a; */
   -webkit-transition: color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out;
 }
@@ -1203,7 +1203,13 @@ ul li i {
   border-color: #fe3638 ;
  
 }
-    /* border: 1px solid red; */
+   
+
+.addcartsec a{
+  color: #373f50;
+  width: 100%;
+  text-decoration: none;
+}
     
     
 /*# sourceMappingURL=style.css.map */

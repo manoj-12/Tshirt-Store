@@ -1,11 +1,7 @@
 from django import template
 from math import floor
 
-
-
 register = template.Library()
-
-
 
 
 @register.simple_tag
@@ -31,4 +27,15 @@ def rupee():
 def ActiveSize(active_size , size):
     if active_size == size:
         return 'dark'
-    return 'light'    
+    return 'light'   
+
+
+@register.simple_tag
+def clc_sale_price(price , discount):
+    price = price-(price*discount/100)
+    return floor(price)
+
+@register.simple_tag
+def quantity(a , b):
+    return a*b    
+ 

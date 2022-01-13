@@ -51,7 +51,7 @@
               data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="bi bi-person user-icons"></i>
               <span class="singin-text text-decoration-none">Hello, {{request.user.first_name|slice:':8'}} </span>
               <span class="account-name dropdown">
-              <p class="pt-1" href=""> My Account</p>  
+                <p class="pt-1" href=""> My Account</p>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><a class="dropdown-item" href="#">History</a></li>
@@ -68,25 +68,28 @@
             </a>
           </div>
           {% endif %}
-          <!-- </button> -->
-          <!-- Modal -->
+          <div class="cart-detail addcartsec" data-bs-toggle="modal" data-bs-target="#cart-detail-model">
 
-          <!-- user section end -->
 
-          <!-- cart section -->
-          <div class="cart-detail" data-bs-toggle="modal" data-bs-target="#cart-detail-model">
-            <div class="cart-info">
-              <i class="bi bi-cart3"></i>
-              <span class="position-absolute start-1 translate-middle badge rounded-pill bg-danger" style="margin: 0px 0px 0px -5px;
+            <a href="/cartdetail">
+              <div class="cart-info">
+                <i class="bi bi-cart3"></i>
+                <span class="position-absolute start-1 translate-middle badge rounded-pill bg-danger" style="margin: 0px 0px 0px -5px;
                       font-size: 12px;">
-                <small>4</small>
-              </span>
-              <span class="mycart-text">My Cart
-              </span>
-              <span class="price">$125.00</span>
-            </div>
+                  <small>
+                    {{request.session.cart|length}}
+                  </small>
+                </span>
+                <span class="mycart-text">My Cart
+                </span>
+                <span class="price">$125.00</span>
+              </div>
+            </a>
+
+
+
           </div>
-          <!-- cart section end -->
+
         </div>
       </div>
     </nav>
@@ -173,7 +176,7 @@
     </div>
   </div>
   <!-- cart model start -->
-  <div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header" style="background: #f6f9fc;">
@@ -219,7 +222,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- sub nav bar start here -->
   <!-- <div class="main-ulist">
     <div class="container-fluid">
