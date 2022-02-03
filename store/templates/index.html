@@ -54,256 +54,148 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
- 
-    {% for tshirt in tshirts %}
-    <div class="col-6 col-md-3 mt-3">
-      <div class="main-arrival-body">
-        <div class="main-arrival">
-          <div class="lable">
-            <p>{{tshirt.discount}}% OFF</p>
-          </div>
-          <div class="arrival-img" >
-            <!-- <a href="single.html"> <img src="/static/img/newarrival/n1.2.webp" class="img-1 img-fluid" alt=""></a> -->
-            <a href="/productdetail/{{tshirt.slug}}"><img src="{{tshirt.image.url}}" class="img-2 img-fluid " alt=""></a>
-          </div>
-          <div class="productname-ratting">
-            <div class="prod-name">
-              <p class="text-center fw-bold">{{tshirt.tshirt_name}}</p>
-            </div>
-            <div class="fw-bold d-flex justify-content-between px-5">
-              <del class="min-price">
-                {%rupee%} {%min_price tshirt%}
-              </del>
-              <p class="after-discount-price">
-                {%rupee%} {%sale_price tshirt%}
+    <div class="col-md-3 mt-3">
+      <!-- filter -->
+      <!-- occations -->
+      <form id="filterform" action="/" method="">
+        <select onchange="submitform()" class="form-select" name='occation' aria-label="Default select example">
+          <option value="">Occations</option>
+          {% for occation in occations%}
 
-              </p>
-            </div>
-           
-          </div>
-         
-        </div>
-      </div>
+
+          <option {% if request.GET.occation == occation.slug %}selected{% endif %} value="{{occation.slug}}">
+            {{occation.title}}
+          </option>
+          {% endfor %}
+        </select>
+        <!-- sleeves-->
+        <select onchange="submitform()" class="form-select" name='sleeve' aria-label="Default select example">
+          <option value="">Sleeves</option>
+          {% for sleeve in sleeves %}
+          <option {% if request.GET.sleeve == sleeve.slug %}selected{% endif %} value="{{sleeve.slug}}">{{sleeve.title}}
+
+          </option>
+          {% endfor %}
+        </select>
+
+        <!-- neck_types -->
+        <select onchange="submitform()" class="form-select" name='neck_type' aria-label="Default select example">
+          <option value="">NeckType</option>
+          {% for neck_type in neck_types %}
+          <option {% if request.GET.neck_type == neck_type.slug %}selected{% endif %} value="{{neck_type.slug}}">
+            {{neck_type.title}}
+
+          </option>
+          {% endfor %}
+        </select>
+        <!-- 'ideal_fors-->
+        <select onchange="submitform()" class="form-select" name='ideal_for' aria-label="Default select example">
+          <option value="">IdealFor</option>
+          {% for ideal_for in ideal_fors %}
+          <option {% if request.GET.ideal_for == ideal_for.slug %}selected{% endif %} value="{{ideal_for.slug}}">
+            {{ideal_for.title}}
+
+          </option>
+          {% endfor %}
+        </select>
+
+        <!-- Brand  -->
+        <select onchange="submitform()" class="form-select" name='brand' aria-label="Default select example">
+          <option value="">Brand</option>
+          {% for brand in brands %}
+          <option {% if request.GET.brand == brand.slug %}selected{% endif %} value="{{brand.slug}}">{{brand.title}}
+
+          </option>
+          {% endfor %}
+        </select>
+        <!-- colors -->
+        <select onchange="submitform()" class="form-select" name='color' aria-label="Default select example">
+          <option class="text-uppercase" value="">Color</option>
+          {% for color in colors %}
+          <option {% if request.GET.color == color.slug %}selected{% endif %} value="{{color.slug}}">{{color.title}}
+
+          </option>
+          {% endfor %}
+        </select>
+
+        <a href="/">Reset</a>
+      </form>
     </div>
 
-    {% endfor %}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--     
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-            <div class="arrival-img">
-            <a href="single.html">  <img src="/static/img/newarrival/n2.2.webp" class="img-1 img-fluid" alt=""></a>
-              <img src="/static/img/newarrival/n2.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
+    <div class="col-md-9">
+      <div class="row">
+        {% for tshirt in page_obj %}
+        <div class="col-6 col-md-3 mt-3">
+          <div class="main-arrival-body">
+            <div class="main-arrival">
+              <div class="lable">
+                <p>{{tshirt.discount}}% OFF</p>
               </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
+              <div class="arrival-img">
+                <!-- <a href="single.html"> <img src="/static/img/newarrival/n1.2.webp" class="img-1 img-fluid" alt=""></a> -->
+                <a href="/productdetail/{{tshirt.slug}}"><img src="{{tshirt.image.url}}" class="img-2 img-fluid "
+                    alt=""></a>
               </div>
-              <div class=" fw-bold text-center">$1580</div>
+              <div class="productname-ratting">
+                <div class="prod-name">
+                  <p class="text-center fw-bold">{{tshirt.tshirt_name}}</p>
+                </div>
+                <div class="fw-bold d-flex justify-content-between px-5">
+                  <del class="min-price">
+                    {%rupee%} {%min_price tshirt%}
+                  </del>
+                  <p class="after-discount-price">
+                    {%rupee%} {%sale_price tshirt%}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        {% endfor %}
+
+
+       
+
       </div>
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-            <div class="arrival-img">
-              <img src="/static/img/newarrival/n3.2.webp" class="img-1 img-fluid" alt="">
-              <img src="/static/img/newarrival/n3.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
-              </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
-              </div>
-              <div class=" fw-bold text-center">$1580</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-            <div class="lable">
-              <p>80% OFF</p>
-            </div>
-            <div class="arrival-img">
-            <a href="single.html">  <img src="/static/img/newarrival/n4.2.webp" class="img-1 img-fluid" alt=""></a>
-              <img src="/static/img/newarrival/n4.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
-              </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
-              </div>
-              <div class=" fw-bold text-center">$1580</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-
-            <div class="arrival-img">
-            <a href="single.html">  <img src="/static/img/newarrival/n5.2.webp" class="img-1 img-fluid" alt=""></a>
-              <img src="/static/img/newarrival/n5.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
-              </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
-              </div>
-              <div class=" fw-bold text-center">$1580</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-            <div class="lable">
-              <p>20% OFF</p>
-            </div>
-            <div class="arrival-img">
-            <a href="single.html">  <img src="/static/img/newarrival/n6.2.webp" class="img-1 img-fluid" alt=""></a>
-              <img src="/static/img/newarrival/n6.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
-              </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
-              </div>
-              <div class=" fw-bold text-center">$1580</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-            <div class="arrival-img">
-            <a href="single.html">  <img src="/static/img/newarrival/n7.2.webp" class="img-1 img-fluid" alt=""></a>
-              <img src="/static/img/newarrival/n7.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
-              </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
-              </div>
-              <div class=" fw-bold text-center">$1580</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-3 mt-3">
-        <div class="main-arrival-body">
-          <div class="main-arrival">
-            <div class="arrival-img">
-            <a href="single.html">  <img src="/static/img/newarrival/n8.2.webp" class="img-1 img-fluid" alt=""></a>
-              <img src="/static/img/newarrival/n8.1.webp" class="img-2 img-fluid" alt="">
-            </div>
-            <div class="productname-ratting">
-              <div class="prod-name">
-                <p class="text-center fw-bold">product name</p>
-              </div>
-              <div class="price-add-ratting d-flex justify-content-center">
-              <div class="star-ratting text-center">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                <i class="bi bi-star"></i>
-              </div>
-              <div class=" fw-bold text-center">$1580</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-
-
-
+    </div>
   </div>
 </div>
+
+<!-- Pagination start -->
+
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center ">
+      <ul class="pagination ">
+        {% if page_obj.has_previous %}
+        <li class="page-item"> <a class="page-link" href="?{{pageurl}}">first</a></li>
+        <li class="page-item"><a class="page-link" href="?{{pageurl}}{{ page_obj.previous_page_number }}">previous</a></li>
+        {% endif %}
+
+        <li class="page-item">
+          <a class="page-link" href="">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</a>
+        </li>
+
+
+        {% if page_obj.has_next %}
+        <li class="page-item"> <a class="page-link" href="?{{pageurl}}{{ page_obj.next_page_number }}">next</a></li>
+        <li class="page-item"> <a class="page-link" href="?{{pageurl}}{{ page_obj.paginator.num_pages }}">last</a></li>
+
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination End -->
+
 <!-- new arrivals design Ends here -->
 
 <!--What's New Start Here  -->
@@ -471,7 +363,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  function submitform() {
+    frm = document.getElementById('filterform')
+    frm.submit()
+  }
+</script>
 <!-- Also Like Section End Here -->
-
-
 {% endblock %}

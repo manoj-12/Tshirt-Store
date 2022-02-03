@@ -1,3 +1,4 @@
+import re
 from django import template
 from math import floor
 
@@ -16,6 +17,15 @@ def sale_price(tshirt):
     discount = tshirt.discount
     return floor(price-(price*discount/100))
     
+
+# @register.simple_tag
+# def cart_sale_price(Cart):
+#     price = Cart.sizeVariant.price
+#     discount = Cart.sizeVariant.tshirt.discount
+#     print('Price :',price,'Discount',discount)
+#     sale_price = floor(price-(price*discount/100))
+#     return sale_price
+
 
 @register.simple_tag
 def rupee():
@@ -38,4 +48,10 @@ def clc_sale_price(price , discount):
 @register.simple_tag
 def quantity(a , b):
     return a*b    
- 
+
+
+
+
+@register.simple_tag
+def total_order_price(order):
+    pass

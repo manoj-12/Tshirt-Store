@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load tshirt_tag %}
+{% block content %}
+
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+
+                <div class="d-flex justify-content-between mt-2">
+                    <button class="btn signin-button text-white" type="submit">Check Out </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tshirt</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col"></th>
+                        <th scope="col">Price</th>
+
+                        <!-- <th scope="col">User</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {%for cart in carts%}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{cart.sizeVariant.tshirt}}</td>
+                        <td>{{cart.sizeVariant}}</td>
+                        <td>{{cart.quantity}}</td>
+
+                        <td>{%clc_sale_price cart.sizeVariant.price cart.sizeVariant.tshirt.discount as sale_price %}
+                        </td>
+                        <td>{%rupee%}{%quantity cart.quantity sale_price%}</td>
+                        <!-- <td>{{cart.user}}</td> -->
+                    </tr>
+
+                    {% endfor %}
+                    <!-- <tr colspan="">
+                        <td colspan='3' class="fw-bold">Total Payable Amount :</td>
+                        <td class="fw-bold">{{total}}.00</td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 fw-bold">Total Payable Amount :</div>
+                <div class="col-6 d-flex justify-content-end fw-bold">{%rupee%}{{total}}</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

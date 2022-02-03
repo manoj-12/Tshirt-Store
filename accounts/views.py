@@ -23,10 +23,11 @@ def signup(request):
         return render(request, 'signup.html' ,{'form':form})
    
 def login(request):
+    next_page = request.GET.get('next')
+    # print('Next Page',next_page)
     if request.method == 'GET':
         form = CustomerLoginForm()
         return render(request , 'login.html' ,{'form':form})
-
     else:
         form = CustomerLoginForm(data = request.POST)
         if form.is_valid():
@@ -58,7 +59,10 @@ def login(request):
                     }
                    session_cart.append(obj)
                 request.session['cart']=session_cart
-                return  redirect('/')
+                if next_page is None:
+                    return redirect('/')
+                else:
+                    return redirect (next_page)
         else:
             return render(request, 'login.html', {'form': form})
 

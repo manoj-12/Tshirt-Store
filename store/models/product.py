@@ -63,7 +63,7 @@ class Tshirt(models.Model):
     image3 = models.ImageField(upload_to = 'upload/image' ,blank=True )
     image4 = models.ImageField(upload_to = 'upload/image' ,blank=True )
     occasion = models.ForeignKey(Occasion , on_delete=models.CASCADE)
-    deal_for = models.ForeignKey(Idealfor, on_delete=models.CASCADE)
+    Ideal_for = models.ForeignKey(Idealfor, on_delete=models.CASCADE)
     neck_type = models.ForeignKey(NeckType, on_delete=models.CASCADE)
     sleeve = models.ForeignKey(Sleeve, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
@@ -88,21 +88,20 @@ class Sizevariant(models.Model):
     tshirt = models.ForeignKey(Tshirt ,on_delete=models.CASCADE)
     size = models.CharField(choices=SIZES , max_length=5)
     def __str__(self):
-        return self.size
+        return f'{self.size} - {self.tshirt.tshirt_name}'
 
 
 class Cart(models.Model):
     sizeVariant = models.ForeignKey(Sizevariant , on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     user = models.ForeignKey(User , on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.sizeVariant.tshirt.tshirt_name
+    
     class Meta:
         # verbose_name = 'Child'
         verbose_name_plural = 'CART'
-
-    def __str__(self):
-        return f'{self.sizeVariant} {self.quantity} {self.user}'
-
-
 
 class Order(models.Model):
     orderStatus = (
@@ -116,8 +115,8 @@ class Order(models.Model):
         ('COD','cod'),
         ('ONLINE','online'),
     )
-
-    order_statu = models.CharField(choices=orderStatus , max_length=15)
+    
+    order_status = models.CharField(choices=orderStatus , max_length=15)
     payment_method  = models.CharField(choices=paymentMethod , max_length=15)
     shiping_address  = models.CharField(max_length=100 , null=False)
     phone  = models.CharField(max_length=10, null=False)
@@ -128,7 +127,7 @@ class Order(models.Model):
 
     class Meta:
         verbose_name_plural = 'ORDER'
-    
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)  
@@ -141,7 +140,10 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name_plural = 'ORDER ITEMS'
 
-    
+    def __str__(self):
+        return self.tshirt.tshirt_name
+
+
 class Payment(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)  
     date = models.DateTimeField(null=False , auto_now_add=True)
@@ -151,3 +153,4 @@ class Payment(models.Model):
 
     class Meta:
         verbose_name_plural = 'PAYMENT'
+

@@ -1,8 +1,11 @@
+# from pyexpat import model
+# from statistics import mode
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm , AuthenticationForm
 from django.contrib.auth.forms import User
 
+from store.models.product import Order
 
 class CustometCreationForm(UserCreationForm):
     username = forms.EmailField(required=True , label="Email")
@@ -18,8 +21,15 @@ class CustometCreationForm(UserCreationForm):
         model = User
         fields = ['username','first_name' , 'last_name']
 
-
-
 class CustomerLoginForm(AuthenticationForm):
-
     username = forms.EmailField(required=True , label='Email')
+
+
+# Check Out Form start here
+
+
+class CheckoutForm(forms.ModelForm):
+    phone = forms.IntegerField(required=True)
+    class Meta:
+        model = Order
+        fields = ['shiping_address','phone','payment_method']

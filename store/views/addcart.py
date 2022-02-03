@@ -7,7 +7,6 @@ def AddToCart(request , slug , size):
         user = request.user
     cart = request.session.get('cart')
     
-
     if cart is None:
         cart = []
     tshirt = Tshirt.objects.get(slug=slug)
