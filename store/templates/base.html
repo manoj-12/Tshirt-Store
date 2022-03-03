@@ -37,7 +37,7 @@
         <a class="navbar-brand" href="/"><img src="{%static 'img/logo.png' %}" alt="" class="img-fluid logo"></a>
         <a href="/"><img src="{%static 'img/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
         <div class="d-flex person-info">
-        
+
           <!-- user section -->
           {% if request.user.is_authenticated %}
           <div class="user-model-box dropdown" data-bs-toggle="" data-bs-target="">
@@ -72,7 +72,7 @@
                     {{request.session.cart|length}}
                   </small>
                 </span>
-                
+
               </div>
             </a>
           </div>
@@ -84,7 +84,8 @@
       <div class="row d-flex">
         <!-- <div class="col-12"> -->
         <form class="search-form">
-          <input class="form-control fw-bold" type="" placeholder="Search for product" aria-label="Search">
+          <input class="form-control fw-bold" type="" placeholder="Search for product" aria-label="Search" name=""
+            id="search">
           <button class="btn search-icon seaarch-icon-2" type="submit"><i class="bi bi-search "></i></button>
         </form>
         <!-- </div> -->
@@ -161,7 +162,7 @@
       </div>
     </div>
   </div>
-  
+
   {% block content %}
 
   {% endblock %}
@@ -234,7 +235,7 @@
               <p class="subs-theory">Subscribe to our newsletter to receive early discount offers, updates and new
                 products info.</p>
             </div>
-            
+
           </div>
         </div>
       </div>

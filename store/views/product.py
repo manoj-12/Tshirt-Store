@@ -1,5 +1,5 @@
 
-from django .shortcuts import render
+from django .shortcuts import render , HttpResponse
 from django.core.paginator import Paginator
 from math  import floor
 from store .models .product import Slider, Tshirt , Occasion , Sleeve , NeckType , Idealfor,Brand,Color
@@ -68,4 +68,5 @@ def home(request):
         'pageurl':pageurl
     }
     return render(request , 'index.html' , context=context)
+
 
