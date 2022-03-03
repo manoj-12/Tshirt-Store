@@ -37,12 +37,7 @@
         <a class="navbar-brand" href="/"><img src="{%static 'img/logo.png' %}" alt="" class="img-fluid logo"></a>
         <a href="/"><img src="{%static 'img/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
         <div class="d-flex person-info">
-          <!-- wish list  section -->
-          <div class="wish-list">
-            <i class="bi bi-suit-heart" data-bs-toggle="tooltip" data-bs-placement="top" title="wish list"></i>
-          </div>
-          <!-- wish list section end -->
-
+        
           <!-- user section -->
           {% if request.user.is_authenticated %}
           <div class="user-model-box dropdown" data-bs-toggle="" data-bs-target="">
@@ -77,9 +72,7 @@
                     {{request.session.cart|length}}
                   </small>
                 </span>
-                <span class="mycart-text">My Cart
-                </span>
-                <span class="price">$125.00</span>
+                
               </div>
             </a>
           </div>
@@ -168,87 +161,7 @@
       </div>
     </div>
   </div>
-  <!-- cart model start -->
-  <!-- <div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" style="background: #f6f9fc;">
-          <h5 class="modal-title fw-bold" id="exampleModalLabel">Your Cart</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul class="list-group cart-item-list list-group-horizontal  cart-product-list">
-            <li class="list-group-item  "><img src="{%static 'img/shoose01.jpg' %}" class="img-fluid " alt="">
-            </li>
-            <li class="list-group-item fw-bold"> <span class="product-name fw-bold">Sneakers</span>
-              <p class="fw-bold">$150
-                <span class="">x 1</span>
-              </p>
-            </li>
-            <li class="list-group-item mx-5 fw-bold cart-item-remove-button">X</li>
-          </ul>
-          <ul class="list-group cart-item-list list-group-horizontal">
-            <li class="list-group-item"><img src="{%static 'img/bag02.jpg' %}" class="img-fluid" alt="">
-            </li>
-            <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Backpack</span>
-              <p class="fw-bold">$150
-                <span class="">x 1</span>
-              </p>
-            </li>
-            <li class="list-group-item mx-5 fw-bold">X</li>
-          </ul>
-          <ul class="list-group cart-item-list list-group-horizontal">
-            <li class="list-group-item"><img src="{%static 'img/cap03.jpg' %}" class="img-fluid" alt="">
-            </li>
-            <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Stash
-                Hat</span>
-              <p class="fw-bold">$150
-                <span class="">x 1</span>
-              </p>
-            </li>
-            <li class="list-group-item mx-5 fw-bold">X</li>
-          </ul>
-          <div class="d-grid gap-2">
-            <button class="btn signin-button text-white" type="button"><i class="bi bi-credit-card-2-back"></i>
-              &nbsp;&nbsp;Checkout</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- sub nav bar start here -->
-  <!-- <div class="main-ulist">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="toggle"><i class="bi bi-list"></i></div>
-        <div class="cross"><i class="bi bi-x-square"></i></div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <nav class="nav-bar">
-        <ul>
-          <li><a href="#">All Category</i></a>
-            <ul>
-              <li><a href="#">Men's</a></li>
-              <li><a href="#">Women's</a>
-              </li>
-              <li><a href="#">Kid's</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Men's</a></li>
-          <li><a href="#">Women's</a>
-            <ul>
-              <li><a href="#">Jean's</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Kid's</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div> -->
-  <!-- sub nav End -->
-
+  
   {% block content %}
 
   {% endblock %}
@@ -321,10 +234,7 @@
               <p class="subs-theory">Subscribe to our newsletter to receive early discount offers, updates and new
                 products info.</p>
             </div>
-            <!-- <div class="footer-name">
-              <h3>Download our app</h3>
-              <img src="/{%static 'img/logo/footerapplogo.png" class="img-fluid footer-img" alt="">
-            </div> -->
+            
           </div>
         </div>
       </div>

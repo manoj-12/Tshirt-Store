@@ -27,7 +27,7 @@
                         <th scope="col"></th>
                         <th scope="col">Price</th>
 
-                        <!-- <th scope="col">User</th> -->
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -42,14 +42,11 @@
                         <td>{%clc_sale_price cart.sizeVariant.price cart.sizeVariant.tshirt.discount as sale_price %}
                         </td>
                         <td>{%rupee%}{%quantity cart.quantity sale_price%}</td>
-                        <!-- <td>{{cart.user}}</td> -->
+                       
                     </tr>
 
                     {% endfor %}
-                    <!-- <tr colspan="">
-                        <td colspan='3' class="fw-bold">Total Payable Amount :</td>
-                        <td class="fw-bold">{{total}}.00</td>
-                    </tr> -->
+                    
                 </tbody>
             </table>
             <div class="row d-flex justify-content-center">

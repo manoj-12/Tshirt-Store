@@ -127,7 +127,7 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 114px;
   height: 46px;
   position: relative;
-  top: 18px;
+  top: 8px;
   cursor: pointer;
 }
 
@@ -254,8 +254,8 @@ ul li i {
 .cart-detail {
   font-size: small;
   position: relative;
-  left: 12px;
-  top: 9px;
+  left: 27px;
+  top: 0px;
   width: 99px;
   cursor: pointer;
 }
@@ -577,11 +577,13 @@ ul li i {
 }
 
 .main-arrival-body {
+  height: 400px;
   position: relative;
   cursor: pointer;
   background-color: #f3f5f9;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
           box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
 }
 
 .arrival-img {

@@ -1,17 +1,17 @@
-# from store .urls import path
+
 from django .shortcuts import render
 from django.core.paginator import Paginator
 from math  import floor
-from store .models .product import Tshirt , Occasion , Sleeve , NeckType , Idealfor,Brand,Color
+from store .models .product import Slider, Tshirt , Occasion , Sleeve , NeckType , Idealfor,Brand,Color
 from urllib.parse import urlencode
+
+
+
 def home(request):
+    slider = Slider.objects.all()
+    print("Slider :",slider)
     data = request.GET
     tshirt = Tshirt.objects.all()
-
-    
-
-
-
 
     occations = data.get('occation')
     sleeves = data.get('sleeve')
@@ -20,8 +20,6 @@ def home(request):
     brands = data.get('brand')
     colors = data.get('color')
 
-   
-  
 
 
     if occations !='' and occations is not None:
@@ -50,7 +48,7 @@ def home(request):
     brand = Brand.objects.all()
 
       
-    paginator = Paginator(tshirt, 1) # Show 25 contacts per page.
+    paginator = Paginator(tshirt, 12) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -59,6 +57,7 @@ def home(request):
     data['page']= ''
     pageurl = urlencode(data)
     context = {
+        'sliders':slider,
         'occations':occation,
         'sleeves':sleve,
         'neck_types':neck_type,

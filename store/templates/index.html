@@ -7,10 +7,9 @@
     <div class="row">
       <div class="col-12">
         <div class="owl-carousel owl-theme owl-carousel-1">
-          <div class="item"><img src="/static/img/slider/s4.jpg" alt="" class="img-fluid"></div>
-          <div class="item"><img src="/static/img/slider/s5.jpg" alt="" class="img-fluid"></div>
-          <div class="item"><img src="/static/img/slider/s6.jpg" alt="" class="img-fluid"></div>
-          <div class="item"><img src="/static/img/slider/s7.jpg" alt="" class="img-fluid"></div>
+          {% for slider in sliders %}
+          <div class="item"><img src="{{slider.img.url}}" alt="" class="img-fluid"></div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -119,27 +118,21 @@
           </option>
           {% endfor %}
         </select>
-
         <a href="/">Reset</a>
       </form>
     </div>
-
-
-
-
     <div class="col-md-9">
       <div class="row">
         {% for tshirt in page_obj %}
         <div class="col-6 col-md-3 mt-3">
-          <div class="main-arrival-body">
+          <div class="main-arrival-body" >
             <div class="main-arrival">
               <div class="lable">
                 <p>{{tshirt.discount}}% OFF</p>
               </div>
               <div class="arrival-img">
                 <!-- <a href="single.html"> <img src="/static/img/newarrival/n1.2.webp" class="img-1 img-fluid" alt=""></a> -->
-                <a href="/productdetail/{{tshirt.slug}}"><img src="{{tshirt.image.url}}" class="img-2 img-fluid "
-                    alt=""></a>
+                <a href="/productdetail/{{tshirt.slug}}"><img src="{{tshirt.image.url}}" class="img-2 img-fluid" alt=""></a>
               </div>
               <div class="productname-ratting">
                 <div class="prod-name">
@@ -158,10 +151,6 @@
           </div>
         </div>
         {% endfor %}
-
-
-       
-
       </div>
     </div>
   </div>
@@ -197,130 +186,6 @@
 <!-- Pagination End -->
 
 <!-- new arrivals design Ends here -->
-
-<!--What's New Start Here  -->
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <h4 class="best-saller"> <span class="fw-bold text-uppercase">what's </span> <span
-          class="text-uppercase">New</span>
-      </h4>
-    </div>
-  </div>
-</div>
-<div class="container mt-3">
-  <div class="row">
-    <div class="owl-carousel owl-theme whatsNewCarousel">
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <!-- <a href="/single.html"> -->
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w1.webp" alt=""></a>
-            </figure>
-            <!-- </a> -->
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w2.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w3.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w4.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w5.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w6.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"><img class="figure-img img-fluid" src="static/img/whatsnew/w7.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="whatsNewCarousel-main-body">
-          <div class="whats-new-body">
-            <figure class="figure">
-              <a href="single.html"> <img class="figure-img img-fluid" src="static/img/whatsnew/w8.webp" alt=""></a>
-            </figure>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="fw-bold">Product Name</span>
-            <span>$150 <del>$250</del></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--What's New End Here  -->
 
 <!-- Also Like Section Start Here -->
 <div class="container d-flex justify-content-center mt-4">

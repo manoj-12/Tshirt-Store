@@ -1,7 +1,16 @@
+from distutils.command.upload import upload
+from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import CharField
-from django.utils.tree import Node
+
+
+
+class Slider(models.Model):
+    img = models.ImageField(upload_to = 'upload/image' ,blank=False)
+    
+    class Meta:
+        verbose_name_plural = 'SLIDER'
 
 
 class TshirtProperty(models.Model):

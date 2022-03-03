@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from store .models .product import Cart, Order, OrderItem, Payment, Tshirt , NeckType , Occasion , Color ,Idealfor,Brand,Sleeve,Sizevariant
+from store .models .product import  Cart, Order, OrderItem, Payment,Tshirt , NeckType , Occasion , Color ,Idealfor,Brand,Sleeve,Sizevariant,Slider
 # Register your models here.
 
 class Sizevariantconfig(admin.StackedInline):
@@ -11,7 +11,7 @@ class Sizevariantconfig(admin.StackedInline):
 class Tshirtconfig(admin.ModelAdmin):
     prepopulated_fields = {'slug':('tshirt_name',)}
     inlines = [Sizevariantconfig]
-    list_per_page = 1
+    list_per_page = 12
     list_display = ('tshirt_name','occasion','Ideal_for','neck_type','sleeve','brand','color')
 
 class CartAdmin(admin.ModelAdmin):
@@ -63,6 +63,8 @@ class orderAdmin(admin.ModelAdmin):
         p_id = obj.payment_set.all()[0].id
         return format_html( f"<a href='/admin/store/payment/{p_id}/change/' target='_blank'>Click For Payment Informantion</a>")
 
+
+admin.site.register(Slider)
 admin.site.register(Tshirt , Tshirtconfig)
 admin.site.register(NeckType)
 admin.site.register(Occasion)
