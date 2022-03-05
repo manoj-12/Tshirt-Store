@@ -20,13 +20,9 @@ def Checkout(request):
             price = c.sizeVariant.price
             discount = c.sizeVariant.tshirt.discount
             quantity = c.quantity
-            # print('Quantity',quantity)
             single_prod=price-(price*discount/100)
             final_price = single_prod*quantity
-            # print('Final Price:',final_price)
-            # print('Single Product:',single_prod)
             total = floor(total+final_price)
-            # print("Total",total)
         context = {
             'form':form,
             'carts':cart,
@@ -40,7 +36,7 @@ def Checkout(request):
             shiping_add = form.cleaned_data.get('shiping_address')
             phone = form.cleaned_data.get('phone')
             payment_method = form.cleaned_data.get('payment_method')
-            print('shiping_add :',shiping_add,'phone :',phone,'payment_method :',payment_method)
+            # print('shiping_add :',shiping_add,'phone :',phone,'payment_method :',payment_method)
             user =  request.user
             cart = Cart.objects.filter(user=user)
             total = 0

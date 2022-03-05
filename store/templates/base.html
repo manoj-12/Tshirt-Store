@@ -43,7 +43,7 @@
           <div class="user-model-box dropdown" data-bs-toggle="" data-bs-target="">
             <a class="dropdown-toggle text-decoration-none" href="#" role="button" id="dropdownMenuLink"
               data-bs-toggle="dropdown" aria-expanded="false" href=""><i class="bi bi-person user-icons"></i>
-              <span class="singin-text text-decoration-none">Hello, {{request.user.first_name|slice:':8'}} </span>
+              <span class="singin-text text-decoration-none">Hello, {{request.user.first_name|truncatechars:5}} </span>
               <span class="account-name dropdown">
                 <p class="pt-1" href=""> My Account</p>
             </a>

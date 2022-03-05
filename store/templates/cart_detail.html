@@ -28,11 +28,11 @@
                         style="height: 70px;"></td>
                 <td>{{cart.tshirt.tshirt_name}}</td>
                 <td>{{cart.size}}</td>
-                <td>{{cart.size.price}}</td>
-                <td>{{cart.tshirt.discount}}</td>
+                <td>{% rupee %}{{cart.size.price}}</td>
+                <td>{{cart.tshirt.discount}}%</td>
                 <td>{{cart.quantity}}</td>
-                <td>{%clc_sale_price cart.size.price cart.tshirt.discount as afterdiscountprice %}{{afterdiscountprice}}</td>
-                <td>{% quantity afterdiscountprice cart.quantity as total%}{{total}}</td>
+                <td>{% rupee %}{%clc_sale_price cart.size.price cart.tshirt.discount as afterdiscountprice %}{{afterdiscountprice}}</td>
+                <td>{%rupee%}{% quantity afterdiscountprice cart.quantity as total%}{{total}}</td>
             </tr>
             {% endfor %}
             
@@ -40,7 +40,7 @@
         <tfoot>
             <th colspan="7"></th>
             <th colspan="">TOTAL :</th>
-            <th colspan="">{{total}}</th>
+            <th colspan="">{% rupee %}{{total}}</th>
             </tr>
         </tfoot>
     </table>

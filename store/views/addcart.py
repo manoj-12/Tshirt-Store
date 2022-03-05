@@ -10,7 +10,8 @@ def AddToCart(request , slug , size):
     if cart is None:
         cart = []
     tshirt = Tshirt.objects.get(slug=slug)
-    size_temp= Sizevariant.objects.get(size=size , tshirt=tshirt)
+    size_temp=Sizevariant.objects.get(size=size,tshirt=tshirt)
+    print("Temp size :",size_temp)
 
     flag = True
     for cartobj in cart:
@@ -19,7 +20,7 @@ def AddToCart(request , slug , size):
         if t_id == tshirt.id and size == size_short:
         # if t_id == tshirt.id and size == cartobj['size']:
             flag = False
-            cartobj['quantity']=  cartobj['quantity']+1
+            cartobj['quantity']=cartobj['quantity']+1
 
     if flag:
         cart_obj = {
@@ -41,12 +42,6 @@ def AddToCart(request , slug , size):
             c.sizeVariant = size_temp
             c.quantity = 1
             c.save()
-
-
-
-
-    
-        
     request.session['cart'] = cart
     Retun_Url = request.GET.get('full_path')
     # print('Cart Session =:',request.session.get('cart'))

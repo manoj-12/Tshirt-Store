@@ -16,7 +16,7 @@
                 </div>
                 <div class="price-section fw-bold ">
                     <span class="sale-price me-3">{%rupee%} {{saleprice}}</span>
-                    <span class="actualprice me-3"><del>{{price}}</del></span>
+                    <span class="actualprice me-3"><del>{% rupee %}{{price}}</del></span>
                     <span class="discount me-3">{{tshirt.discount}}% off</span>
                 </div>
             </div>
@@ -39,12 +39,12 @@
             <div class="mt-3 d-flex justify-content-between addcartsec">
                 <a href="/addtocard/{{tshirt.slug}}/{{active_size.size}}?full_path={{request.get_full_path}}">
                     <div class="AddToCart fw-bold d-block">
-                       <span>Add To Cart </span>
+                       <span>Add To Cart</span>
                     </div>
                 </a>
-                <div class="buyNow fw-bold">
+                <!-- <div class="buyNow fw-bold">
                     <span>Buy Now</span>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

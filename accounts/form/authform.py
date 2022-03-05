@@ -4,7 +4,6 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm , AuthenticationForm
 from django.contrib.auth.forms import User
-
 from store.models.product import Order
 
 class CustometCreationForm(UserCreationForm):
@@ -19,7 +18,7 @@ class CustometCreationForm(UserCreationForm):
         return FirstName.strip()
     class Meta:
         model = User
-        fields = ['username','first_name' , 'last_name']
+        fields = ['username','first_name','last_name']
 
 class CustomerLoginForm(AuthenticationForm):
     username = forms.EmailField(required=True , label='Email')

@@ -21,6 +21,6 @@ def ProductDetail(request , slug):
         'price':price,
         'active_size':size
     }
-    return render(request , 'product_detail.html',context=context)
+    return render(request,'product_detail.html',context=context)
 
 
