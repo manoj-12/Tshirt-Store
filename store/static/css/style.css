@@ -802,22 +802,27 @@ ul li i {
   border-radius: 1%;
 }
 
-.main-bodyfilter {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 80px;
+.btn-reset{
+  background-color: #fe696ae6;
+  margin-left: 10px;
+  
 }
 
-.filter-search {
-  position: relative;
-  margin: 0px 5px 0px 0px;
+
+
+.btn-reset:hover{
+  background-color: #fe3638;
 }
+
 
 .filter-submit-icons {
   position: absolute;
   right: 0;
   top: 0;
 }
+
+
+
 
 .cotegory-name p {
   margin-top: 20px;
@@ -1213,5 +1218,7 @@ ul li i {
   text-decoration: none;
 }
     
+
+
     
 /*# sourceMappingURL=style.css.map */
