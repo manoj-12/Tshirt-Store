@@ -5,7 +5,9 @@ from store.models.product import Order, OrderItem
 @login_required(login_url='/accounts/login')
 def orderView(request):
     user = request.user
-    order = Order.objects.filter(user=user).order_by('-date').exclude(order_status='PANDING')
+    print("User :" ,user)
+    order = Order.objects.filter(user=user).order_by('-date')
+    print('Order :' , order)
     context = {
         'orders':order
     }

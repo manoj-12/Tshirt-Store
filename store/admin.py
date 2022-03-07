@@ -1,6 +1,5 @@
 
 from django.contrib import admin
-from django.utils.html import format_html
 
 from store .models .product import  Cart, Order, OrderItem, Payment,Tshirt , NeckType , Occasion , Color ,Idealfor,Brand,Sleeve,Sizevariant,Slider
 # Register your models here.
@@ -27,41 +26,9 @@ class CartAdmin(admin.ModelAdmin):
 
 
 
-    # readonly_fields = ('user',)
-
-
-
 class orderAdmin(admin.ModelAdmin):
-    list_display = ['user','shiping_address','payment_method','total','phone','date']
+    list_display = ['user','payment_method','shiping_address' ,'phone' ,'total' , 'date']
 
-    readonly_fields = ('user',
-                       'shiping_address',
-                       'payment_method',
-                       'phone',
-                       'total',
-                       'payment',
-                       'payment_request_id',
-                       'payment_id',
-                       'payment_status'
-                       )
-    fieldsets = (
-        ('ORDER INFORMATION', {'fields': ('order_status','shiping_address','phone','total','user')}),
-        ('PAYMENT INFORMATION', {'fields': ('payment_request_id','payment_id','payment','payment_status')})
-    )
-
-    def payment_request_id(self,obj):
-        return obj.payment_set.all()[0].payment_request_id
-
-    def payment_id(self,obj):
-        return obj.payment_set.all()[0].payment_id
-
-
-    def payment_status(self,obj):
-        return obj.payment_set.all()[0].payment_status
-
-    def payment(self,obj):
-        p_id = obj.payment_set.all()[0].id
-        return format_html( f"<a href='/admin/store/payment/{p_id}/change/' target='_blank'>Click For Payment Informantion</a>")
 
 
 admin.site.register(Slider)

@@ -113,19 +113,19 @@ class Cart(models.Model):
         verbose_name_plural = 'CART'
 
 class Order(models.Model):
-    orderStatus = (
-        ('PANDING','pending'),
-        ('PLACED','placed'),
-        ('CANCELED','canceled'),
-        ('COMPLETE','complet'),
-    )
+    # orderStatus = (
+    #     ('PANDING','pending'),
+    #     ('PLACED','placed'),
+    #     ('CANCELED','canceled'),
+    #     ('COMPLETE','complet'),
+    # )
 
     paymentMethod = (
         ('COD','cod'),
         ('ONLINE','online'),
     )
     
-    order_status = models.CharField(choices=orderStatus , max_length=15)
+    # order_status = models.CharField(choices=orderStatus , max_length=15)
     payment_method  = models.CharField(choices=paymentMethod , max_length=15)
     shiping_address  = models.CharField(max_length=100 , null=False)
     phone  = models.CharField(max_length=10, null=False)
